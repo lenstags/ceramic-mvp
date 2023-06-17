@@ -1,0 +1,19 @@
+.sun-editor .se-toolbar {
+  background-color: #fff !important;
+}
+
+.sun-editor {
+  border: none !important;
+}
+
+.se-toolbar sun-editor-common {
+  outline: none !important;
+}
+
+.se-toolbar {
+  outline: none !important;
+}
+
+.sun-editor-editable {
+  font-family: Inter, Inter-Regular, Inter-Semibold, Inter-Medium !important;
+}
