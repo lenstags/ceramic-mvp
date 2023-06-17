@@ -34,7 +34,7 @@ const ExplorePage: NextPage = () => {
     `);
     const posts: PostProps[] = [];
 
-    res.data.postsIndex.edges.map((post) => {
+    res.data.postsIndex.edges.map((post: any) => {
       if (post.node) {
         posts.push({
           author: {
