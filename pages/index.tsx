@@ -179,7 +179,7 @@ const Home: NextPage = () => {
         {/* TODO: UPDATE FAVICON */}
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="w-full h-full">
+      {/* <div className="w-full h-full">
         <div className="  p-6 flex">
           <input
             value={newPost}
@@ -201,9 +201,44 @@ const Home: NextPage = () => {
         </div>
         <p className="ml-6 text-xl font-serif mt-2">Home</p>
 
-        {/* <div className="flex px-4 py-2"> */}
-        {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4 py-2"> */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-4 py-2">
+
+        <div id='datas' className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-4 py-2">
+          {posts.map((post) => (
+            <Post author={post.author} post={post.post} key={post.post.id} />
+          ))}
+        </div>
+      </div> */}
+
+      <div className="w-full h-full flex flex-col">
+        <div className="p-6 flex">
+          <input
+            value={newPost}
+            maxLength={100}
+            placeholder="Aye Modular Hackathon! What do you want to say?"
+            className="border border-gray-300 rounded-lg px-4 w-10/12 py-2 outline-none "
+            onChange={(e) => {
+              setNewPost(e.target.value);
+            }}
+          />
+          <button
+            className="bg-black text-white rounded-lg w-2/12 ml-4  py-2"
+            onClick={() => {
+              createPost();
+            }}
+          >
+            Post ➤
+          </button>
+        </div>
+        <p className="ml-6 text-xl font-serif mt-2">Home</p>
+
+        <div
+          id="datas"
+          // style={{
+          //   scrollbarWidth: "thin",
+          //   scrollbarColor: "rgba(155, 155, 155, 0.7) transparent",
+          // }}
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-4 py-2 overflow-auto flex-grow"
+        >
           {posts.map((post) => (
             <Post author={post.author} post={post.post} key={post.post.id} />
           ))}

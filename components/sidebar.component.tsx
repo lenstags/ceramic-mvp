@@ -21,11 +21,13 @@ export const Sidebar = ({ name, username, id }: SidebarProps) => {
               <FaUser /> Profile
             </div>
           </Link>
-          <Link href="/explore">
+          <span
+          // href="/explore"
+          >
             <div className="flex cursor-pointer p-3 rounded-lg hover:bg-teal-200 gap-2 items-center">
               <FaHashtag /> Explorer
             </div>
-          </Link>
+          </span>
           {/* 
           <div className="bg-yellow-400">
             {name}

@@ -9,6 +9,23 @@
   }
 }
 
+#datas::-webkit-scrollbar {
+  width: 0px;
+}
+
+#datas:hover::-webkit-scrollbar {
+  width: 3px;
+}
+
+#datas::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#datas::-webkit-scrollbar-thumb {
+  background: rgba(155, 155, 155, 0.3);
+}
+
+
 @keyframes gradientAnimation {
   0% {
     background-position: 0% 0%;
