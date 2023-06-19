@@ -48,7 +48,7 @@ const Home: NextPage = () => {
       `);
         getPosts();
         setNewPost("");
-        alert("Created post.");
+        alert("Post created!");
       } else {
         alert(
           "Failed to fetch profile for authenticated user. Please register a profile."
@@ -179,27 +179,31 @@ const Home: NextPage = () => {
         {/* TODO: UPDATE FAVICON */}
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="w-full ">
-        <div className="bg-white py-4 pl-6 flex">
-          <textarea
+      <div className="w-full h-full">
+        <div className="  p-6 flex">
+          <input
             value={newPost}
             maxLength={100}
             placeholder="Aye Modular Hackathon! What do you want to say?"
-            className="border border-gray-300 rounded-lg px-4 w-full py-2 outline-none "
+            className="border border-gray-300 rounded-lg px-4 w-10/12 py-2 outline-none "
             onChange={(e) => {
               setNewPost(e.target.value);
             }}
           />
           <button
-            className="bg-black text-white rounded-lg px-6 py-2 mx-2"
+            className="bg-black text-white rounded-lg w-2/12 ml-4  py-2"
             onClick={() => {
               createPost();
             }}
           >
-            Post
+            Post ➤
           </button>
         </div>
-        <div className="flex px-4 py-2">
+        <p className="ml-6 text-xl font-serif mt-2">Home</p>
+
+        {/* <div className="flex px-4 py-2"> */}
+        {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4 py-2"> */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-4 py-2">
           {posts.map((post) => (
             <Post author={post.author} post={post.post} key={post.post.id} />
           ))}

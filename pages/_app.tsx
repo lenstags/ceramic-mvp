@@ -30,6 +30,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   };
 
   const getProfile = async () => {
+    console.log("ceramic.did ", ceramic.did);
+    console.log("swwwwww", localStorage.getItem("ceramic:eth_did"));
+
     if (ceramic.did !== undefined) {
       const profile = await composeClient.executeQuery(`
         query {
@@ -43,36 +46,41 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           }
         }
       `);
+      console.log("ceramic.did2 ", ceramic.did);
 
       const viewerObj: any = profile?.data?.viewer;
-
+      console.log("ccccc ", viewerObj);
       localStorage.setItem("viewer", viewerObj.id);
       setProfile(viewerObj.basicProfile);
     }
   };
   // Update to include refresh on auth
   useEffect(() => {
+    const fetchData = async () => {
+      await handleLogin();
+      await getProfile();
+    };
+
+    console.log("esta logeuado? ", localStorage.getItem("logged_in"));
     if (localStorage.getItem("logged_in")) {
-      handleLogin();
-      getProfile();
+      console.log("siii");
+      fetchData();
     }
   }, []);
 
   return (
     <div className=" flex h-screen w-full ">
-      {" "}
       <CeramicWrapper>
         <Sidebar
           name={profile?.name}
           username={profile?.username}
           id={profile?.id}
         />
-        <div className="relative flex h-screen  w-9/12 bg-b lue-700">
+        <div className="relative flex h-screen  w-8/12 bg-b lue-700">
           <AuthPrompt />
-
           <Component {...pageProps} ceramic />
-          <Footer />
         </div>
+        <Footer />
       </CeramicWrapper>
     </div>
   );

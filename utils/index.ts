@@ -31,21 +31,22 @@ export const authenticateCeramic = async (
 ) => {
   let logged_in = localStorage.getItem("logged_in");
   const popup: any = document.querySelector(".popup");
-  console.log(logged_in);
 
   if (logged_in == "true") {
     if (popup) {
-      console.log(" popup a poner en none", popup);
       popup.style.display = "none";
     }
   }
 
   let auth_type = localStorage.getItem("ceramic:auth_type");
+  console.log("valor leidop ", auth_type);
   // TODO RESEARCH & TEST
   // if (auth_type == "key") {
   //   authenticateKeyDID(ceramic, compose);
   // }
   if (auth_type == "eth") {
+    console.log("buscar aca ");
+
     authenticateEthPKH(ceramic, compose);
   }
   localStorage.setItem("logged_in", "true");
@@ -123,6 +124,7 @@ const authenticateEthPKH = async (
       resources: compose.resources,
     });
     // Set the session in localStorage.
+    console.log("SETEADO!");
     localStorage.setItem("ceramic:eth_did", session.serialize());
   }
 

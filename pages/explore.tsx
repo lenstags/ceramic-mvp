@@ -68,8 +68,10 @@ const ExplorePage: NextPage = () => {
   }, []);
 
   return (
-    <div className="content">
-      <div className="bg-green-200">
+    <div className="p-6 w-full">
+      <p className="text-xl font-serif mt-2">Explorer</p>
+
+      <div className="bg-green-500 flex">
         {posts?.map((post) => (
           <Post author={post.author} post={post.post} key={post.post.id} />
         ))}
